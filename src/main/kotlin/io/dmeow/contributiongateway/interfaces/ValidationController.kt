@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException
 import java.util.*
 
 @RestController
-@RequestMapping("/api/v1/validation")
+@RequestMapping("/api/v1/validations")
 class ValidationController(
     private val validationService: ValidationService,
 ) {
