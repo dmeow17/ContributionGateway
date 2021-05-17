@@ -7,6 +7,8 @@ import io.dmeow.contributiongateway.interfaces.model.FxQuoteInputDto
 import io.dmeow.contributiongateway.interfaces.model.toDomain
 import io.dmeow.contributiongateway.interfaces.model.toDto
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.enums.ParameterIn
 import io.swagger.v3.oas.annotations.media.ArraySchema
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
@@ -28,15 +30,18 @@ class ContributionGatewayController(
     }
 
     @Operation(
+        description = "Get latest FX quote of specific ccy pair",
+        parameters = [Parameter(`in` = ParameterIn.PATH, name = "ccyPair", example = "EURUSD")],
         responses = [
             ApiResponse(
                 responseCode = "200",
+                description = "FxQuote Found",
                 content = [Content(
                     mediaType = APPLICATION_JSON_VALUE,
                     schema = Schema(implementation = FxQuoteDto::class),
                 )],
             ),
-            ApiResponse(responseCode = "404", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "FxQuote Not Found", content = [Content()]),
         ],
     )
     @GetMapping("/$CCY_PAIR_VARIABLE")
@@ -44,21 +49,25 @@ class ContributionGatewayController(
         contributionGateway.findLatestQuote(ccyPair)?.toDto() ?: throw CcyPairNotFoundException(ccyPair)
 
     @Operation(
+        description = "Get all FX quotes of specific ccy pair",
+        parameters = [Parameter(`in` = ParameterIn.PATH, name = "ccyPair", example = "EURUSD")],
         responses = [
             ApiResponse(
                 responseCode = "200",
+                description = "FxQuotes Found",
                 content = [Content(
                     mediaType = APPLICATION_JSON_VALUE,
                     array = ArraySchema(schema = Schema(implementation = FxQuoteDto::class))
                 )],
             ),
-            ApiResponse(responseCode = "404", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "FxQuotes Not Found", content = [Content()]),
         ],
     )
     @GetMapping("/$CCY_PAIR_VARIABLE/all-quotes")
     fun getAllQuotes(@PathVariable ccyPair: String): List<FxQuoteDto> =
         contributionGateway.findFxQuotes(ccyPair)?.map { it.toDto() } ?: throw CcyPairNotFoundException(ccyPair)
 
+    @Operation(description = "Contribute FX quote")
     @PostMapping
     fun contributeFxQuote(@RequestBody fxQuoteInput: FxQuoteInputDto): ValidationResult {
         val fxQuote = fxQuoteInput.toDomain(nowGenerator())
