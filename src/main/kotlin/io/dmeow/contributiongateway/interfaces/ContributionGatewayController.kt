@@ -1,7 +1,11 @@
-package io.dmeow.contributiongateway.`interface`
+package io.dmeow.contributiongateway.interfaces
 
 import io.dmeow.contributiongateway.domain.ContributionGateway
-import io.dmeow.contributiongateway.domain.ValidationResult
+import io.dmeow.contributiongateway.domain.model.ValidationResult
+import io.dmeow.contributiongateway.interfaces.model.FxQuoteDto
+import io.dmeow.contributiongateway.interfaces.model.FxQuoteInputDto
+import io.dmeow.contributiongateway.interfaces.model.toDomain
+import io.dmeow.contributiongateway.interfaces.model.toDto
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException

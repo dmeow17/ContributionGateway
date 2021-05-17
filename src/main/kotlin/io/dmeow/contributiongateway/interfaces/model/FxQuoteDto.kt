@@ -1,6 +1,6 @@
-package io.dmeow.contributiongateway.`interface`
+package io.dmeow.contributiongateway.interfaces.model
 
-import io.dmeow.contributiongateway.domain.FxQuote
+import io.dmeow.contributiongateway.domain.model.FxQuote
 import java.time.LocalDateTime
 
 class FxQuoteInputDto(

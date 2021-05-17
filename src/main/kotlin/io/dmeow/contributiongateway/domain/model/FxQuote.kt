@@ -1,4 +1,4 @@
-package io.dmeow.contributiongateway.domain
+package io.dmeow.contributiongateway.domain.model
 
 import java.time.LocalDateTime
 

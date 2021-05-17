@@ -1,5 +1,6 @@
 package io.dmeow.contributiongateway.domain
 
+import io.dmeow.contributiongateway.domain.model.FxQuote
 import org.springframework.stereotype.Service
 
 @Service

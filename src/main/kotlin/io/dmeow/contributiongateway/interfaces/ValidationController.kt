@@ -1,7 +1,7 @@
-package io.dmeow.contributiongateway.`interface`
+package io.dmeow.contributiongateway.interfaces
 
-import io.dmeow.contributiongateway.domain.ValidationResult
 import io.dmeow.contributiongateway.domain.ValidationService
+import io.dmeow.contributiongateway.domain.model.ValidationResult
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

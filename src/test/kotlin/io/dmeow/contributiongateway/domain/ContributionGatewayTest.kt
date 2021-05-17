@@ -1,5 +1,7 @@
 package io.dmeow.contributiongateway.domain
 
+import io.dmeow.contributiongateway.domain.model.FxQuote
+import io.dmeow.contributiongateway.domain.model.ValidationResult
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
