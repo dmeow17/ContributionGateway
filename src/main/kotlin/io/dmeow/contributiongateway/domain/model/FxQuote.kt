@@ -8,8 +8,4 @@ data class FxQuote(
     val ask: Double,
     var validationResult: ValidationResult? = null,
     val lastUpdatedTime: LocalDateTime = LocalDateTime.now(),
-) {
-    init {
-        require(bid >= 0.0 && ask >= 0.0) { "High/low prices must be non-negative" }
-    }
-}
+)
